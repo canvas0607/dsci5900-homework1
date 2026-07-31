@@ -53,9 +53,11 @@ def calculate_total_value(inventory):
                 f"Quantity for product '{product['name']}' must be an integer."
             )
 
-        if not isinstance(product["price"], float):
+        if isinstance(product["price"], bool) or not isinstance(
+            product["price"], (int, float)
+        ):
             raise TypeError(
-                f"Price for product '{product['name']}' must be a float."
+                f"Price for product '{product['name']}' must be a number."
             )
 
         if product["quantity"] < 0 or product["price"] < 0:

@@ -58,8 +58,8 @@ Function calculate_total_value(inventory):
         If quantity is not an integer:
             Raise a TypeError saying quantity must be an integer.
 
-        If price is not a float:
-            Raise a TypeError saying price must be a float.
+        If price is a bool, or not an int or float:
+            Raise a TypeError saying price must be a number.
 
         If quantity or price is negative:
             Raise a ValueError saying quantity and price cannot be negative.
@@ -113,4 +113,24 @@ Test 7: Reject an item that is not a dictionary
     Create an inventory containing a string.
     Call calculate_total_value.
     Check that a TypeError is raised.
+
+Test 8: Reject inventory that is not a list
+    Pass a dictionary instead of a list.
+    Check that a TypeError is raised.
+
+Test 9: Reject an empty product name
+    Create a product whose name is only whitespace.
+    Check that a ValueError is raised.
+
+Test 10: Reject boolean quantity
+    Create a product whose quantity is True.
+    Check that a TypeError is raised.
+
+Test 11: Accept an integer price
+    Create a product whose price is the integer 10.
+    Check that the total value is calculated correctly.
+
+Test 12: Reject a negative price
+    Create a product whose price is negative.
+    Check that a ValueError is raised.
 ```
